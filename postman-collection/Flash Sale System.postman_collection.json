@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "144ce22a-0be4-45e1-869a-71ce6bf37c5e",
+		"name": "Flash Sale System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22816530"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Get Flash Sales",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZjlucm9ybDAwMDM1OWtvNjVndzVpNDIiLCJlbWFpbCI6Im93bmVyQGRlbW8uY29tIiwicm9sZSI6Im93bmVyIiwic3RvcmVJZCI6ImNtZjlucm9ybDAwMDI1OWtvZmt2dzV2Z2MiLCJpYXQiOjE3NTcyOTk5ODMsImV4cCI6MTc1NzM4NjM4M30.5gYBjeacTeJpHzY9VYfIpsEBVJIutguSAWbpacnxAIc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/admin/flash-sales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admin",
+								"flash-sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flash Sale analytic by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZjlucm9ybDAwMDM1OWtvNjVndzVpNDIiLCJlbWFpbCI6Im93bmVyQGRlbW8uY29tIiwicm9sZSI6Im93bmVyIiwic3RvcmVJZCI6ImNtZjlucm9ybDAwMDI1OWtvZmt2dzV2Z2MiLCJpYXQiOjE3NTcyOTk5ODMsImV4cCI6MTc1NzM4NjM4M30.5gYBjeacTeJpHzY9VYfIpsEBVJIutguSAWbpacnxAIc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/admin/flash-sale/106677a3-4f40-4cf4-bec6-67d7aeced6ec/analytics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admin",
+								"flash-sale",
+								"106677a3-4f40-4cf4-bec6-67d7aeced6ec",
+								"analytics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Flash Sale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productName\": \"iPhone X Pro\",\r\n  \"productDescription\": \"Latest Apple phone\",\r\n  \"originalPrice\": 1200,\r\n  \"flashSalePrice\": 999,\r\n  \"currency\": \"USD\",\r\n  \"totalStock\": 100,\r\n  \"startTime\": \"2025-09-12T10:00:00.000Z\",\r\n  \"endTime\": \"2025-09-15T10:00:00.000Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/admin/flash-sale/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admin",
+								"flash-sale",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate / Deactivate Flash Sale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isActive\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/admin/flash-sale/:flashSaleId/activate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admin",
+								"flash-sale",
+								":flashSaleId",
+								"activate"
+							],
+							"variable": [
+								{
+									"key": "flashSaleId",
+									"value": "f93f37fb-0afc-40bd-86a1-949da645f709"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Flash Sale",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productName\": \"iPhone 16 Pro Max\",\r\n  \"productDescription\": \"Updated description\",\r\n  \"originalPrice\": 1300,\r\n  \"flashSalePrice\": 999,\r\n  \"currency\": \"USD\",\r\n  \"totalStock\": 150,\r\n  \"startTime\": \"2025-09-13T12:00:00.000Z\",\r\n  \"endTime\": \"2025-09-14T12:00:00.000Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/admin/flash-sale/f93f37fb-0afc-40bd-86a1-949da645f709",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admin",
+								"flash-sale",
+								"f93f37fb-0afc-40bd-86a1-949da645f709"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Try to purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"user_123\",\r\n  \"flashSaleId\": \"f93f37fb-0afc-40bd-86a1-949da645f709\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/purchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check User Purchase Status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"user_123\",\r\n  \"flashSaleId\": \"f93f37fb-0afc-40bd-86a1-949da645f709\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/purchase/status/:userId/:flashSaleId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"purchase",
+								"status",
+								":userId",
+								":flashSaleId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "user_123"
+								},
+								{
+									"key": "flashSaleId",
+									"value": "f93f37fb-0afc-40bd-86a1-949da645f709"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sale",
+			"item": [
+				{
+					"name": "Get item sale status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"user_123\",\r\n  \"flashSaleId\": \"f93f37fb-0afc-40bd-86a1-949da645f709\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sale/status/:flashSaleId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sale",
+								"status",
+								":flashSaleId"
+							],
+							"variable": [
+								{
+									"key": "flashSaleId",
+									"value": "523b1e8d-3fdf-4a0d-9dc4-51386a92e0de"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"user_123\",\r\n  \"flashSaleId\": \"f93f37fb-0afc-40bd-86a1-949da645f709\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sale/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sale",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

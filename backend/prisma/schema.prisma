@@ -1,0 +1,74 @@
+// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model FlashSale {
+  id                 String   @id @default(uuid())
+  productName        String
+  productDescription String? // Optional product description
+  originalPrice      Decimal  @db.Decimal(10, 2) // Original price
+  flashSalePrice     Decimal  @db.Decimal(10, 2) // Discounted price
+  currency           String   @default("USD") // Currency code
+  totalStock         Int
+  remainingStock     Int
+  startTime          DateTime
+  endTime            DateTime
+  isActive           Boolean  @default(false)
+  version            Int      @default(1) // Optimistic locking
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  purchases     Purchase[]
+  purchaseQueue PurchaseQueue[]
+
+  @@unique([id, version]) // 👈 needed for optimistic locking
+  @@map("flash_sales")
+}
+
+model Purchase {
+  id          String         @id @default(uuid())
+  userId      String
+  flashSaleId String
+  status      PurchaseStatus
+  purchasedAt DateTime       @default(now())
+
+  pricePaid Decimal @db.Decimal(10, 2)
+  currency  String  @default("USD")
+
+  flashSale FlashSale @relation(fields: [flashSaleId], references: [id])
+
+  @@unique([userId, flashSaleId])
+  @@map("purchases")
+}
+
+model PurchaseQueue {
+  id          String      @id @default(uuid())
+  userId      String
+  flashSaleId String
+  status      QueueStatus
+  createdAt   DateTime    @default(now())
+  processedAt DateTime?
+
+  flashSale FlashSale @relation(fields: [flashSaleId], references: [id])
+
+  @@map("purchase_queue")
+}
+
+enum PurchaseStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum QueueStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
