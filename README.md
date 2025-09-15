@@ -1,28 +1,17 @@
 # Flash Sale System
 
-# Simple System Arch is in image format located the root dir named 'System-Arch.png'
+## Simple System Arch is in image format located the root dir named 'System-Arch.png'
 
-# Design Choices & Trade-offs is in separate file named 'system-overview.md'
-
-A high-throughput flash sale platform built with **Node.js (Express)**, **PostgreSQL (Prisma)**, **Redis**, and **Next.js**.  
-This system is designed to handle massive concurrent requests during flash sales, ensuring **fairness**, **scalability**, and **performance**.
-
----
-
-## Tech Stack
-
-- **Backend**: Node.js, Express, Prisma, Redis
-- **Frontend**: Next.js, React, TailwindCSS
-- **Database**: PostgreSQL
-- **Cache & Queue**: Redis
-- **Containerization**: Docker & Docker Compose
-- **Testing**: Jest, Supertest, Artillery (stress tests)
-
----
+## Design Choices & Trade-offs is in separate file named 'system-overview.md'
 
 ## Installation
 
-### 1. Assuming you already extracted the file in 'fs-system' folder and your inside of it.
+### 1. Clone the project repository from git hub.
+
+```bash
+git clone https://github.com/mikelcop-condebender/flash-sale-system.git
+
+```
 
 ### 2. Start Services with Docker
 
