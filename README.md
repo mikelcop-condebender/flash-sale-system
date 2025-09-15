@@ -1,5 +1,9 @@
 # Flash Sale System
 
+# Simple System Arch is in image format located the root dir named 'System-Arch.png'
+
+# Design Choices & Trade-offs is in separate file named 'system-overview.md'
+
 A high-throughput flash sale platform built with **Node.js (Express)**, **PostgreSQL (Prisma)**, **Redis**, and **Next.js**.  
 This system is designed to handle massive concurrent requests during flash sales, ensuring **fairness**, **scalability**, and **performance**.
 

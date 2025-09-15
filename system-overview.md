@@ -1,45 +1,5 @@
 # Flash Sale System
 
-# Simple System Arch
-
-A high-throughput flash sale platform built with **Node.js (Express)**, **PostgreSQL (Prisma)**, **Redis**, and **Next.js**.  
-This system is designed to handle massive concurrent requests during flash sales, ensuring **fairness**, **scalability**, and **performance**.
-
----
-
-┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│ │ │ │ │ │
-│ Next.js │ │ Redis Cache │ │ PostgreSQL │
-│ Frontend │◄──►│ (Session & │ │ Database │
-│ │ │ Rate Limiting)│ │ │
-└─────────┬───────┘ └─────────────────┘ └─────────┬───────┘
-│ │
-│ HTTP/API Calls │
-│ │
-┌─────────▼───────────────────────────────────────────────▼───────┐
-│ │
-│ Express.js API Server │
-│ │
-│ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
-│ │ Auth │ │ Sale Status│ │ Purchase Handler │ │
-│ │ Middleware │ │ Service │ │ (Atomic Transactions) │ │
-│ └─────────────┘ └─────────────┘ └─────────────────────────┘ │
-│ │
-│ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
-│ │Rate Limiting│ │ Inventory │ │ Queue System │ │
-│ │ Middleware │ │ Management │ │ (In-memory/Redis) │ │
-│ └─────────────┘ └─────────────┘ └─────────────────────────┘ │
-│ │
-└─────────────────────┬───────────────────────────────────────────┘
-│
-│ Database Operations
-│
-┌───────▼────────┐
-│ │
-│ Prisma ORM │
-│ │
-└────────────────┘
-
 ## Tech Stack
 
 - **Backend**: Node.js, Express, Prisma, Redis
